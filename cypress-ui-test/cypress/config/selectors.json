@@ -1,0 +1,10 @@
+{
+  "username": "#user-name",
+  "password": "#password",
+  "loginButton": "#login-button",
+  "header": "#header",
+  "logoutButton": "#logout-button",
+  "inventoryItem": ".inventory_item_name",
+  "productSort": ".product_sort_container",
+  "errorMessage": ".error-message-container"
+}

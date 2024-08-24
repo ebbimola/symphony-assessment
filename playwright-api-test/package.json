@@ -1,0 +1,22 @@
+{
+  "name": "symphony-assessment-playwright",
+  "version": "1.0.0",
+  "description": "An assessment for Symphony",
+  "private": false,
+  "repository": {},
+  "scripts": {},
+  "keywords": [
+    "playwright",
+    "test"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^22.5.0",
+    "dotenv": "^16.4.5"
+  },
+  "dependencies": {
+    "allure-playwright": "3.0.0-beta.10"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "symphony-assessment-cypress",
+  "version": "1.0.0",
+  "description": "An assessment for Symphony",
+  "repository": {},
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "cy:run": "npx cypress run",
+    "cy:open": "npx cypress open"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "cypress": "^13.13.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "reports/json/results.json"
+    },
+    "html": {
+      "enabled": true,
+      "output": "reports/html/results.html"
+    }
+  }
+}
