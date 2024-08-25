@@ -28,8 +28,8 @@ To set up the project locally, follow these steps:
 **Clone the repository**:
 
    ```bash
-   git clone https://github.com/ebbimola/cypress-cucumber-saucedemo.git
-   cd cypress-cucumber-saucedemo
+   git clone https://github.com/ebbimola/cypress-ui-test.git
+   cd cypress-ui-test
 ```
 
 ## Project Structure
