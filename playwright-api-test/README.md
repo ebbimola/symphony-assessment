@@ -13,8 +13,8 @@ This is an assessment project on using Playwright for API testing, including dyn
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/ebbimola/.git
-   cd your-repo-nam
+   git clone https://github.com/ebbimola/playwright-api-test.git
+   cd playwright-api-test
 
    pnpm install
    ```
