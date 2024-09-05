@@ -56,7 +56,7 @@ playwright-api-test/
 - API Test Run
   pnpm api or yarn api
 - Cucumber-UI Test Run
-  pnpm ui or yarn api
+  pnpm ui or yarn ui
 ```
 ## Utility Function For Dynamic Variable Management
 ```bash
