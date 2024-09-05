@@ -1,32 +1,49 @@
-name: Playwright Blog Tests
-on: [push]
+name: Playwright Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
   playwright-runner:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: "20"
+          cache: "pnpm"
+
       - name: Install dependencies
-        run: npm install -g pnpm && pnpm install
+        run: |
+          npm install -g pnpm
+          pnpm install
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
       - name: Run Playwright API Tests
         run: pnpm api
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload API Test Report
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: API Report
-          path: Report/api_report.json
+          path: Reports/api_report.json
           retention-days: 30
 
       - name: Run Playwright UI Tests
         run: pnpm ui
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload UI Test Report
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: UI Report

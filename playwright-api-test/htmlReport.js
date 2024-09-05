@@ -8,11 +8,11 @@ var currentDate =
   (date.getMonth() + 1) +
   "-" +
   date.getFullYear() +
-  " " +
+  "_" +
   date.getHours() +
-  "h" +
+  "_" +
   date.getMinutes() +
-  "m" +
+  "_" +
   date.getSeconds() +
   "_" +
   date.getMilliseconds();
