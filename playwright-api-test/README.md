@@ -1,4 +1,4 @@
-# Playwright API Testing with Dynamic Environment Variables
+# Playwright UI/API Test with Dynamic Environment Variables
 
 This is an assessment project on using Playwright for API testing, including dynamically storing response data as environment variables in a `.env` file.
 
@@ -13,7 +13,7 @@ This is an assessment project on using Playwright for API testing, including dyn
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/ebbimola/playwright-api-test.git
+   git clone https://github.com/ebbimola/symphony-assessment.git
    cd playwright-api-test
 
    pnpm install or yarn install
@@ -56,7 +56,7 @@ playwright-api-test/
 - API Test Run
   pnpm api or yarn api
 - Cucumber-UI Test Run
-  pnpm ui 
+  pnpm ui or yarn api
 ```
 ## Utility Function For Dynamic Variable Management
 ```bash

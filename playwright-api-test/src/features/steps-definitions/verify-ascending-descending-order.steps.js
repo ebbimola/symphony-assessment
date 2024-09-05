@@ -2,7 +2,7 @@ const { Given, When, Then, After } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
 const { efill } = require("../../utils/actions.js");
 const { setup, close } = require("../../utils/setup.js");
-const { pages, selectors, userTypes } = require("../../config/pages.json");
+const { pages, selectors, userTypes } = require("../../config/params.json");
 
 let page;
 let username;
