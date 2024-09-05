@@ -1,6 +1,6 @@
 # Playwright UI/API Test with Dynamic Environment Variables
 
-This is an assessment project on using Playwright for API testing, including dynamically storing response data as environment variables in a `.env` file.
+This is an assessment project on using Playwright for API & UI testing, including dynamically storing response data as environment variables in a `.env` file.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ playwright-api-test/
 ├── screenshots
 ├── src
 │   ├── config
-│   │   └── pages.json
+│   │   └── params.json
 │   ├── features
 │   │   ├── steps-definitions
 │   │   │   └── verify-ascending-descending-order.steps.js
@@ -119,19 +119,21 @@ module.exports = {
 
 ```bash
   Feature: SauceDemo Login and Assert Product Alphabetical Order
-  Note: Verify that the items are sorted by Name ( A -&gt; Z ).
+Note: 
+  Verify that the items are sorted by Name ( A - Z )/(Z - A).
 
-    Scenario: Login successfully with valid credentials
-      Given I open the SauceDemo login page
-      When I login as "standard" user
-      Then I should be redirected to the products page
-      Then Verify item sorting in alphabetical order
+  Background: Login to SauceDemo
+    Given I open the SauceDemo login page
+    When I login as "standard" user
 
-    Scenario: Verify Reverse/Descending Order
-      Given I open the SauceDemo login page
-      When I login as "standard" user
-      Then I should be redirected to the products page
-      Then Verify item sorting in reverse alphabetical order
+  Scenario: Login successfully with valid credentials
+    Then I should be redirected to the products page
+    Then Verify item sorting in alphabetical order
+
+  Scenario: Verify Reverse/Descending Order
+    Then I should be redirected to the products page
+    Then Verify item sorting in reverse alphabetical order
+
     
   /**
   * Initialize and return a new page instance.
