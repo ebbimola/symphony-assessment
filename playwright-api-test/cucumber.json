@@ -1,0 +1,8 @@
+{
+  "default": {
+    "paths": ["src/features/**/*.feature"],
+    "dryRun": false,
+    "require": ["src/features/**/*.js"],
+    "format": ["json:./Reports/cucumber_report.json"]
+  }
+}

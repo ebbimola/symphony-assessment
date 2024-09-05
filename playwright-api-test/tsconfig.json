@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "commonjs",
+    "lib": [],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "playwright", "@cucumber/cucumber"]
+  },
+  "include": ["src/features/**/*.ts", "src/tests/**/*.ts", "src/features/steps-definitions/verify-ascending.ts", "src/features/steps-definitions/verify-ascending", "src/utils/**/*.ts", "src/utils/actions.js"],
+}

@@ -1,0 +1,41 @@
+{
+  "pages": {
+    "inventory": "inventory.html"
+  },
+  "selectors": {
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "#login-button",
+    "header": "#header",
+    "logoutButton": "#logout-button",
+    "inventoryItem": ".inventory_item_name",
+    "productSort": ".product_sort_container",
+    "errorMessage": ".error-message-container"
+  },
+  "userTypes": {
+    "standard": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "locked_out": {
+      "username": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "problem": {
+      "username": "problem_user",
+      "password": "secret_sauce"
+    },
+    "performance": {
+      "username": "performance_glitch_user",
+      "password": "secret_sauce"
+    },
+    "error": {
+      "username": "error_user",
+      "password": "secret_sauce"
+    },
+    "visual": {
+      "username": "visual_bug_user",
+      "password": "secret_sauce"
+    }
+  }
+}

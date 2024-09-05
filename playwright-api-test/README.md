@@ -4,7 +4,7 @@ This is an assessment project on using Playwright for API testing, including dyn
 
 ## Prerequisites
 
-- Node.js (v12 or higher)
+- Node.js (v18 or higher)
 - Playwright
 - `dotenv` package
 
@@ -16,7 +16,7 @@ This is an assessment project on using Playwright for API testing, including dyn
    git clone https://github.com/ebbimola/playwright-api-test.git
    cd playwright-api-test
 
-   pnpm install
+   pnpm install or yarn install
    ```
 
 ## Project Structure
@@ -24,26 +24,39 @@ This is an assessment project on using Playwright for API testing, including dyn
 ```bash
 playwright-api-test/
 ├── README.md
+├── Reports
+│   ├── api_report.json
+│   ├── cucumber_report.json
+│   └── cucumber_report_5-9-2024 13h23m12_219.html
+├── cucumber.json
+├── htmlReport.js
 ├── package.json
-├── playwright-report
-│   └── index.html
 ├── playwright.config.js
 ├── pnpm-lock.yaml
-├── test-results
-├── tests
-│   └── endpoints
-│       └── post.spec.js
-└── utils
-    ├── endpoint-client.js
-    └── env.js
+├── screenshots
+├── src
+│   ├── config
+│   │   └── pages.json
+│   ├── features
+│   │   ├── steps-definitions
+│   │   │   └── verify-ascending-descending-order.steps.js
+│   │   └── verify-ascending-descending-order.feature
+│   ├── tests
+│   │   └── endpoints
+│   │       └── post.spec.js
+│   └── utils
+│       ├── actions.js
+│       ├── env.js
+│       └── setup.js
+└── tsconfig.json
 ```
 ## Running Test
 
 ```bash
-- Interractive Mode
-npx playwright test -ui
-- Headless Mode
-npx playwright test
+- API Test Run
+  pnpm api or yarn api
+- Cucumber-UI Test Run
+  pnpm ui 
 ```
 ## Utility Function For Dynamic Variable Management
 ```bash
@@ -101,3 +114,65 @@ module.exports = {
     console.log(`Created post ID: ${createdPostId}`);
   });
   ```
+
+## Cucumber Test
+
+```bash
+  Feature: SauceDemo Login and Assert Product Alphabetical Order
+  Note: Verify that the items are sorted by Name ( A -&gt; Z ).
+
+    Scenario: Login successfully with valid credentials
+      Given I open the SauceDemo login page
+      When I login as "standard" user
+      Then I should be redirected to the products page
+      Then Verify item sorting in alphabetical order
+
+    Scenario: Verify Reverse/Descending Order
+      Given I open the SauceDemo login page
+      When I login as "standard" user
+      Then I should be redirected to the products page
+      Then Verify item sorting in reverse alphabetical order
+    
+  /**
+  * Initialize and return a new page instance.
+  * @returns {Promise<Page>} The Playwright page instance.
+  */
+  async function setup() {
+    browser = await chromium.launch();
+    context = await browser.newContext();
+    page = await context.newPage();
+    return page;
+  }
+
+  /**
+  * Closes the browser.
+  * @async
+  * @function close
+  * @returns {Promise<void>}
+  */
+  async function close() {
+    await browser.close();
+  }
+```
+
+## Github Actions
+
+```bash
+      - name: Run Playwright API Tests
+        run: pnpm api
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: API Report
+          path: Report/api_report.json
+          retention-days: 30
+
+      - name: Run Playwright UI Tests
+        run: pnpm ui
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: UI Report
+          path: Reports/cucumber_report_*.html
+          retention-days: 30
+```

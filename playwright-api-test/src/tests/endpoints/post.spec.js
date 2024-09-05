@@ -18,7 +18,7 @@ test.describe("Post API Tests", () => {
     expect(response.status()).toBe(200);
     posts = await response.json();
     totalPosts = posts.length;
-    expect(totalPosts).toBeGreaterThan(0);
+    expect(totalPosts).toBe(100);
     console.log(`Initial number of posts: ${totalPosts}`);
   });
 
@@ -30,11 +30,11 @@ test.describe("Post API Tests", () => {
    * * NOTE: The create seem to have a bug, it returns just the id of the created object.
    */
   test("Should create a new post", async ({ request }) => {
-    const data = JSON.stringify({
+    const data = {
       title: "Assessment",
       body: "Symphony",
       userId: 1,
-    });
+    };
     const response = await request.post("/posts", {
       data: data,
     });
@@ -42,8 +42,6 @@ test.describe("Post API Tests", () => {
     createdPostId = await response.json();
     createdPostId = createdPostId.id;
     updateEnv("POSTS_ID", createdPostId.toString());
-    process.env.POST_ID = parseInt(createdPostId);
-    expect(createdPostId).toBeDefined();
     console.log(`Created post ID: ${createdPostId}`);
   });
 
@@ -55,7 +53,8 @@ test.describe("Post API Tests", () => {
    * @param {string} postId - Test will fail perpectually as the created endpoint seem to have a bug
    */
   test("Should fetch the created post by ID", async ({ request }) => {
-    let postId = process.env.POST_ID;
+    let postId = process.env.POSTS_ID;
+    postId = parseInt(postId);
     const response = await request.get(`/posts/${postId}`);
     const resJson = await response.json();
     // expect(response.status()).toBe(200);
@@ -92,6 +91,8 @@ test.describe("Post API Tests", () => {
   test("Should delete the created post", async ({ request }) => {
     const response = await request.delete(`/posts/${process.env.POST_ID}`);
     expect(response.status()).toBe(200);
+    const getResponse = await request.get(`/posts/${process.env.POST_ID}`);
+    expect(getResponse.status()).toBe(404);
   });
 
   /**

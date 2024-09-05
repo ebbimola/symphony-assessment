@@ -1,19 +1,27 @@
 {
-  "name": "symphony-assessment-playwright",
+  "name": "yarn",
   "version": "1.0.0",
   "description": "An assessment for Symphony",
   "private": false,
   "repository": {},
-  "scripts": {},
+  "main": "index.js",
+  "scripts": {
+      "ui": "cucumber-js && node ./htmlReport.js",
+      "api": "playwright test --project=API"
+    },
   "keywords": [
     "playwright",
     "test"
   ],
-  "author": "",
+  "author": "Ebenezer Badmus",
   "license": "ISC",
   "devDependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.46.1",
+    "@types/cucumber-html-reporter": "^5.0.1",
     "@types/node": "^22.5.0",
+    "cucumber-html-reporter": "^7.1.1",
     "dotenv": "^16.4.5"
   },
   "dependencies": {
