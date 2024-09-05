@@ -109,7 +109,6 @@ module.exports = {
     createdPostId = await response.json();
     createdPostId = createdPostId.id;
     updateEnv("POSTS_ID", createdPostId.toString());
-    process.env.POST_ID = parseInt(createdPostId);
     expect(createdPostId).toBeDefined();
     console.log(`Created post ID: ${createdPostId}`);
   });
@@ -162,19 +161,25 @@ Note:
 ```bash
       - name: Run Playwright API Tests
         run: pnpm api
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: API Report
-          path: Report/api_report.json
+          path: Report/
           retention-days: 30
 
       - name: Run Playwright UI Tests
-        run: pnpm ui
-      - uses: actions/upload-artifact@v4
+        run: |
+          yarn cucumber-js || exit 1
+          node ./htmlReport.js || exit 1
+
+      - name: Upload UI Test Report
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: UI Report
-          path: Reports/cucumber_report_*.html
+          path: Reports/
           retention-days: 30
+
 ```
