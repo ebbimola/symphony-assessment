@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: "18"
           cache: "pnpm"
 
       - name: Install dependencies
@@ -36,7 +36,7 @@ jobs:
         if: always()
         with:
           name: API Report
-          path: Reports/api_report.json
+          path: Reports/*.json
           retention-days: 30
 
       - name: Run Playwright UI Tests
@@ -47,5 +47,5 @@ jobs:
         if: always()
         with:
           name: UI Report
-          path: Reports/cucumber_report_*.html
+          path: Reports/*.html
           retention-days: 30
